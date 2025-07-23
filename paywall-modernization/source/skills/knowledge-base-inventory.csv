@@ -1,0 +1,9 @@
+Category,Document,Location,Last Updated,Owner,Status
+System Design,Paywall Architecture,SharePoint,2018-03-15,John Smith,Outdated
+Operations,Batch Schedule,CA7 Docs,2023-01-10,Ops Team,Current
+Development,Coding Standards,Wiki,2019-06-20,Dev Lead,Needs Update
+Database,DB2 Naming Standards,Confluence,2020-11-30,DBA Team,Current
+Security,RACF Profiles,Mainframe,2022-08-15,Security,Current
+Business Rules,Registration Logic,Word Doc,2017-04-10,Business,Outdated
+Testing,Test Scenarios,Excel,2021-05-20,QA Team,Partial
+Production,Runbooks,ServiceNow,2023-02-28,Ops Team,Current

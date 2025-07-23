@@ -1,0 +1,36 @@
+# COBOL Grammar (Simplified BNF)
+<program> ::= <identification-division> <environment-division>? <data-division>? <procedure-division>
+
+<identification-division> ::= "IDENTIFICATION" "DIVISION" "." 
+                             "PROGRAM-ID" "." <program-name> "."
+                             ["AUTHOR" "." <author-name> "."]?
+                             ["DATE-WRITTEN" "." <date> "."]?
+
+<environment-division> ::= "ENVIRONMENT" "DIVISION" "."
+                          <configuration-section>?
+                          <input-output-section>?
+
+<configuration-section> ::= "CONFIGURATION" "SECTION" "."
+                           ["SOURCE-COMPUTER" "." <computer-name> "."]?
+                           ["OBJECT-COMPUTER" "." <computer-name> "."]?
+
+<data-division> ::= "DATA" "DIVISION" "."
+                   <file-section>?
+                   <working-storage-section>?
+                   <linkage-section>?
+
+<working-storage-section> ::= "WORKING-STORAGE" "SECTION" "."
+                             <data-description-entry>*
+
+<data-description-entry> ::= <level-number> <data-name> <picture-clause>? <value-clause>? "."
+
+<procedure-division> ::= "PROCEDURE" "DIVISION" [<using-phrase>]? "."
+                        <paragraph>*
+
+<paragraph> ::= <paragraph-name> "."
+               <sentence>*
+
+<sentence> ::= <statement>* "."
+
+<statement> ::= <move-statement> | <if-statement> | <perform-statement> | 
+                <call-statement> | <exec-sql-statement> | <exec-cics-statement>

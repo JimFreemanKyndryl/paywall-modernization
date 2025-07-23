@@ -1,0 +1,11 @@
+Activity,Dev Team,Ops Team,DBA Team,Security,Business,Management
+Requirements Gathering,C,I,I,I,R,A
+Design Review,R,C,C,C,C,A
+Development,R,I,C,I,I,A
+Code Review,R,I,I,C,I,I
+Testing,R,C,C,I,C,A
+Deployment Planning,C,R,C,C,I,A
+Production Deployment,I,R,C,C,I,A
+Monitoring,I,R,C,I,I,I
+Incident Response,C,R,C,C,I,A
+Change Management,C,C,C,C,C,R/A

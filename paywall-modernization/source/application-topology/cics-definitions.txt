@@ -1,0 +1,24 @@
+# CICS Region Configuration
+REGION: CICSPRD1
+SIT Parameters:
+  APPLID=CICSPRD1
+  GRPLIST=(DFHLIST,PAYWALL,CICSDQ)
+  MXT=500
+  EDSALIM=500M
+  
+Transaction Classes:
+  PAYWL - Paywall transactions (MAX=50)
+  DFLT  - Default class (MAX=200)
+  
+Programs:
+  PWREGCIC - Registration UI (CONCURRENCY=QUASIRENT)
+  CUSTREG  - Registration logic (CONCURRENCY=THREADSAFE)
+  CCVALID  - Credit card validation (CONCURRENCY=REQUIRED)
+  
+Files:
+  CUSTMAST - Customer master (VSAM KSDS)
+  SUBMAST  - Subscription master (VSAM KSDS)
+  
+DB2 Connection:
+  DB2CONN: PAYWLDB
+  DB2ENTRY: PWREGENT (TRANSID=PWRG)

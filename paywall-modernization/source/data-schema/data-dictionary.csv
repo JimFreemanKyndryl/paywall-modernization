@@ -1,0 +1,14 @@
+Table,Column,Type,Length,Null,Key,Description
+CUSTOMERS,CUSTOMER_ID,INTEGER,10,N,PK,Unique customer identifier
+CUSTOMERS,EMAIL,VARCHAR,50,N,UK,Customer email address
+CUSTOMERS,PASSWORD_HASH,CHAR,64,N,,SHA-256 hashed password
+CUSTOMERS,SALT,CHAR,16,N,,Password salt for hashing
+CUSTOMERS,FIRST_NAME,VARCHAR,30,N,,Customer first name
+CUSTOMERS,LAST_NAME,VARCHAR,30,N,,Customer last name
+CUSTOMERS,STATUS,CHAR,1,N,,A=Active I=Inactive S=Suspended
+SUBSCRIPTIONS,SUBSCRIPTION_ID,INTEGER,10,N,PK,Unique subscription ID
+SUBSCRIPTIONS,CUSTOMER_ID,INTEGER,10,N,FK,Reference to CUSTOMERS
+SUBSCRIPTIONS,PLAN_CODE,CHAR,3,N,FK,BAS=Basic PRE=Premium ENT=Enterprise
+SUBSCRIPTIONS,START_DATE,DATE,10,N,,Subscription start date
+SUBSCRIPTIONS,END_DATE,DATE,10,N,,Subscription end date
+SUBSCRIPTIONS,STATUS,CHAR,1,N,,A=Active C=Cancelled E=Expired

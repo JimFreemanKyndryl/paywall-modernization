@@ -1,0 +1,74 @@
+{
+  "organisation": {
+    "it_department": {
+      "mainframe_division": {
+        "development_team": {
+          "size": 8,
+          "roles": {
+            "team_lead": 1,
+            "senior_developers": 3,
+            "developers": 3,
+            "junior_developer": 1
+          },
+          "responsibilities": [
+            "New feature development",
+            "Bug fixes",
+            "Code reviews",
+            "Unit testing"
+          ]
+        },
+        "maintenance_team": {
+          "size": 5,
+          "roles": {
+            "team_lead": 1,
+            "senior_analysts": 2,
+            "analysts": 2
+          },
+          "responsibilities": [
+            "Production support",
+            "Incident resolution",
+            "Patch management",
+            "Performance tuning"
+          ]
+        },
+        "database_team": {
+          "size": 3,
+          "roles": {
+            "lead_dba": 1,
+            "dba": 2
+          },
+          "responsibilities": [
+            "Database administration",
+            "Backup/Recovery",
+            "Performance optimization",
+            "Capacity planning"
+          ]
+        },
+        "operations_team": {
+          "size": 6,
+          "shift_pattern": "24x7",
+          "roles": {
+            "shift_lead": 3,
+            "operators": 3
+          },
+          "responsibilities": [
+            "Job scheduling",
+            "Monitoring",
+            "Incident response",
+            "Batch processing"
+          ]
+        }
+      }
+    }
+  },
+  "governance": {
+    "change_advisory_board": {
+      "frequency": "Weekly",
+      "members": ["IT Manager", "Dev Lead", "Ops Lead", "Security", "Business Rep"]
+    },
+    "architecture_review_board": {
+      "frequency": "Monthly",
+      "members": ["CTO", "Chief Architect", "Domain Architects"]
+    }
+  }
+}

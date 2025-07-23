@@ -1,0 +1,46 @@
+{
+  "job_flows": {
+    "daily_registration": {
+      "schedule": "02:00",
+      "jobs": [
+        {
+          "name": "PAYWLEXT",
+          "description": "Extract registration data from online",
+          "program": "EXTRACT1",
+          "runtime": "10 min"
+        },
+        {
+          "name": "PAYWLSRT",
+          "description": "Sort and deduplicate registrations",
+          "program": "SORT",
+          "depends_on": ["PAYWLEXT"],
+          "runtime": "5 min"
+        },
+        {
+          "name": "PAYWLBAT",
+          "description": "Process batch registrations",
+          "program": "BATCHREG",
+          "depends_on": ["PAYWLSRT"],
+          "runtime": "30 min"
+        },
+        {
+          "name": "PAYWLEML",
+          "description": "Send welcome emails",
+          "program": "EMAILBAT",
+          "depends_on": ["PAYWLBAT"],
+          "runtime": "20 min"
+        }
+      ]
+    },
+    "monthly_billing": {
+      "schedule": "1st of month 00:00",
+      "jobs": [
+        {
+          "name": "PAYWLBIL",
+          "description": "Generate billing for subscriptions",
+          "program": "BILLGEN"
+        }
+      ]
+    }
+  }
+}

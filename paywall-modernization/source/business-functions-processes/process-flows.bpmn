@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="CustomerRegistration" name="Customer Registration Process">
+    <startEvent id="start" name="Registration Request"/>
+    
+    <serviceTask id="validateInput" name="Validate Input">
+      <incoming>flow1</incoming>
+      <outgoing>flow2</outgoing>
+    </serviceTask>
+    
+    <exclusiveGateway id="inputValid" name="Input Valid?">
+      <incoming>flow2</incoming>
+      <outgoing>flow3</outgoing>
+      <outgoing>flow4</outgoing>
+    </exclusiveGateway>
+    
+    <serviceTask id="checkDuplicate" name="Check Duplicate Email">
+      <incoming>flow3</incoming>
+      <outgoing>flow5</outgoing>
+    </serviceTask>
+    
+    <exclusiveGateway id="isDuplicate" name="Duplicate?">
+      <incoming>flow5</incoming>
+      <outgoing>flow6</outgoing>
+      <outgoing>flow7</outgoing>
+    </exclusiveGateway>
+    
+    <serviceTask id="validatePayment" name="Validate Payment">
+      <incoming>flow6</incoming>
+      <outgoing>flow8</outgoing>
+    </serviceTask>
+    
+    <serviceTask id="createCustomer" name="Create Customer">
+      <incoming>flow8</incoming>
+      <outgoing>flow9</outgoing>
+    </serviceTask>
+    
+    <serviceTask id="createSubscription" name="Create Subscription">
+      <incoming>flow9</incoming>
+      <outgoing>flow10</outgoing>
+    </serviceTask>
+    
+    <serviceTask id="generateActivation" name="Generate Activation Key">
+      <incoming>flow10</incoming>
+      <outgoing>flow11</outgoing>
+    </serviceTask>
+    
+    <serviceTask id="sendEmail" name="Send Welcome Email">
+      <incoming>flow11</incoming>
+      <outgoing>flow12</outgoing>
+    </serviceTask>
+    
+    <endEvent id="success" name="Registration Complete">
+      <incoming>flow12</incoming>
+    </endEvent>
+    
+    <endEvent id="error" name="Registration Failed">
+      <incoming>flow4</incoming>
+      <incoming>flow7</incoming>
+    </endEvent>
+    
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="validateInput"/>
+    <sequenceFlow id="flow2" sourceRef="validateInput" targetRef="inputValid"/>
+    <sequenceFlow id="flow3" sourceRef="inputValid" targetRef="checkDuplicate" name="Valid"/>
+    <sequenceFlow id="flow4" sourceRef="inputValid" targetRef="error" name="Invalid"/>
+    <sequenceFlow id="flow5" sourceRef="checkDuplicate" targetRef="isDuplicate"/>
+    <sequenceFlow id="flow6" sourceRef="isDuplicate" targetRef="validatePayment" name="No"/>
+    <sequenceFlow id="flow7" sourceRef="isDuplicate" targetRef="error" name="Yes"/>
+    <sequenceFlow id="flow8" sourceRef="validatePayment" targetRef="createCustomer"/>
+    <sequenceFlow id="flow9" sourceRef="createCustomer" targetRef="createSubscription"/>
+    <sequenceFlow id="flow10" sourceRef="createSubscription" targetRef="generateActivation"/>
+    <sequenceFlow id="flow11" sourceRef="generateActivation" targetRef="sendEmail"/>
+    <sequenceFlow id="flow12" sourceRef="sendEmail" targetRef="success"/>
+  </process>
+</definitions>

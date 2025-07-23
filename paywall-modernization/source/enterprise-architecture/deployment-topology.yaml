@@ -1,0 +1,41 @@
+# Mainframe Deployment Topology
+environments:
+  production:
+    lpar: PROD01
+    sysplex: PLEXMAIN
+    regions:
+      cics:
+        - name: CICSPRD1
+          port: 3270
+          max_tasks: 500
+      db2:
+        - subsystem: DB2P
+          data_sharing_group: DSGPROD
+      batch:
+        - initiator_classes: [A, B, C, S]
+          job_classes:
+            A: "Online priority"
+            B: "Batch normal"
+            C: "Batch low"
+            S: "System"
+    
+  development:
+    lpar: DEV01
+    regions:
+      cics:
+        - name: CICSDEV1
+          port: 3271
+      db2:
+        - subsystem: DB2D
+
+storage:
+  dasd:
+    - volume: PROD01
+      type: 3390-9
+      usage: "System datasets"
+    - volume: PRODDB
+      type: 3390-27
+      usage: "DB2 data"
+  tape:
+    - library: TL3000
+      usage: "Backup and archive"

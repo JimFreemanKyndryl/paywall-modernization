@@ -1,0 +1,19 @@
+# JCL Grammar (Extended BNF)
+<job> ::= <job-statement> <exec-statement>+ <dd-statement>*
+
+<job-statement> ::= "//" <jobname> "JOB" [<positional-params>] ["," <keyword-params>]*
+
+<jobname> ::= <identifier>{1,8}
+
+<exec-statement> ::= "//" [<stepname>] "EXEC" ( <program-name> | <proc-name> ) 
+                    ["," <keyword-params>]*
+
+<dd-statement> ::= "//" <ddname> "DD" <dd-operands>
+
+<dd-operands> ::= <dsn-operand> | <dummy-operand> | <sysout-operand> | <inline-data>
+
+<dsn-operand> ::= "DSN=" <dataset-name> ["," "DISP=" <disposition>]
+
+<disposition> ::= "(" <status> ["," <normal-disp> ["," <abnormal-disp>]] ")"
+
+<status> ::= "NEW" | "OLD" | "SHR" | "MOD"

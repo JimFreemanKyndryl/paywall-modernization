@@ -1,0 +1,67 @@
+{
+  "skills_inventory": {
+    "mainframe_core": {
+      "COBOL": {
+        "required_level": "Expert",
+        "current_staff": 5,
+        "contractors": 2,
+        "average_years": 15
+      },
+      "JCL": {
+        "required_level": "Advanced",
+        "current_staff": 7,
+        "contractors": 2,
+        "average_years": 12
+      },
+      "CICS": {
+        "required_level": "Expert",
+        "current_staff": 3,
+        "contractors": 1,
+        "average_years": 10
+      },
+      "DB2": {
+        "required_level": "Advanced",
+        "current_staff": 4,
+        "contractors": 1,
+        "average_years": 8
+      },
+      "VSAM": {
+        "required_level": "Intermediate",
+        "current_staff": 6,
+        "contractors": 2,
+        "average_years": 10
+      }
+    },
+    "mainframe_tools": {
+      "TSO/ISPF": "All staff",
+      "File-AID": "Data team",
+      "Xpediter": "Debug team",
+      "CA7": "Operations",
+      "BMC MainView": "Performance team"
+    },
+    "supporting_skills": {
+      "RACF Security": 2,
+      "MQ Series": 3,
+      "Connect:Direct": 2,
+      "z/OS Operations": 4
+    }
+  },
+  "skill_gaps": [
+    "Modern IDE usage",
+    "Git/Version control",
+    "Agile methodologies",
+    "Cloud technologies",
+    "API development",
+    "Microservices",
+    "DevOps practices"
+  ],
+  "retirement_risk": {
+    "next_2_years": 3,
+    "next_5_years": 7,
+    "critical_knowledge_holders": [
+      "CICS internals expert",
+      "DB2 performance specialist",
+      "Batch scheduling expert"
+    ]
+  }
+}

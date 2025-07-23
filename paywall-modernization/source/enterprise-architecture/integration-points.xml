@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<integrations>
+  <system name="Paywall Registration">
+    <inbound>
+      <interface name="CICS Terminal">
+        <protocol>3270</protocol>
+        <transaction>PWRG</transaction>
+        <security>RACF</security>
+      </interface>
+      <interface name="Batch Input">
+        <protocol>File Transfer</protocol>
+        <format>Fixed Length</format>
+        <schedule>Daily 2AM</schedule>
+      </interface>
+    </inbound>
+    <outbound>
+      <interface name="Email Service">
+        <protocol>SMTP</protocol>
+        <program>EMAILSVC</program>
+        <async>true</async>
+      </interface>
+      <interface name="Payment Gateway">
+        <protocol>MQ</protocol>
+        <queue>PAYMENT.REQUEST.QUEUE</queue>
+        <format>COBOL Copybook</format>
+      </interface>
+      <interface name="Audit System">
+        <protocol>File</protocol>
+        <dataset>PROD.PAYWALL.AUDIT</dataset>
+        <format>Fixed Length 100</format>
+      </interface>
+    </outbound>
+  </system>
+</integrations>

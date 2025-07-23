@@ -1,0 +1,27 @@
+{
+  "system": "Paywall Registration System",
+  "type": "Mainframe Monolith",
+  "components": {
+    "presentation": {
+      "technology": "CICS BMS",
+      "interfaces": ["3270 Terminal", "CICS Web Support"]
+    },
+    "business_logic": {
+      "technology": "COBOL",
+      "programs": ["CUSTREG", "PWREGCIC", "CCVALID", "HASHUTIL", "KEYGEN"]
+    },
+    "data_access": {
+      "technology": "Embedded SQL",
+      "database": "DB2 z/OS"
+    },
+    "integration": {
+      "internal": ["CICS Transaction Server", "MQ Series"],
+      "external": ["SMTP Gateway", "Payment Gateway"]
+    }
+  },
+  "dependencies": {
+    "runtime": ["z/OS", "CICS TS", "DB2", "Language Environment"],
+    "development": ["COBOL Compiler", "DB2 Precompiler", "CICS Translator"],
+    "operations": ["JES2", "CA7 Scheduler", "BMC MainView"]
+  }
+}

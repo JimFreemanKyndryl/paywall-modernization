@@ -1,0 +1,17 @@
+# CICS Command Grammar
+<cics-command> ::= "EXEC" "CICS" <command-name> <command-options> "END-EXEC"
+
+<command-name> ::= "SEND" | "RECEIVE" | "RETURN" | "LINK" | "XCTL" | 
+                   "READ" | "WRITE" | "DELETE" | "BROWSE"
+
+<send-command> ::= "SEND" ( <send-map> | <send-text> | <send-control> )
+
+<send-map> ::= "MAP" "(" <map-name> ")" 
+               "MAPSET" "(" <mapset-name> ")"
+               ["FROM" "(" <data-area> ")"]
+               ["CURSOR" ["(" <cursor-position> ")"]?]
+               ["ERASE"]
+
+<receive-command> ::= "RECEIVE" "MAP" "(" <map-name> ")"
+                     "MAPSET" "(" <mapset-name> ")"
+                     "INTO" "(" <data-area> ")"
