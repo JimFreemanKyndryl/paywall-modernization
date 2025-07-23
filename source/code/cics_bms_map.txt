@@ -1,0 +1,251 @@
+TITLE 'PAYWALL CUSTOMER REGISTRATION MAP'
+PWREGMAP DFHMSD TYPE=&SYSPARM,                                        X
+               LANG=COBOL,                                             X
+               MODE=INOUT,                                             X
+               TERM=3270,                                              X
+               CTRL=FREEKB,                                            X
+               STORAGE=AUTO,                                           X
+               TIOAPFX=YES
+*
+PWREG01  DFHMDI SIZE=(24,80),                                         X
+               LINE=1,                                                 X
+               COLUMN=1,                                               X
+               CTRL=(PRINT,FREEKB)
+*
+         DFHMDF POS=(1,1),                                            X
+               LENGTH=7,                                               X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=BLUE,                                             X
+               INITIAL='PAYWALL'
+*
+         DFHMDF POS=(1,25),                                           X
+               LENGTH=30,                                              X
+               ATTRB=(ASKIP,BRT),                                      X
+               COLOR=YELLOW,                                           X
+               INITIAL='CUSTOMER REGISTRATION SYSTEM'
+*
+         DFHMDF POS=(1,72),                                           X
+               LENGTH=8,                                               X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='PWREG01'
+*
+         DFHMDF POS=(3,1),                                            X
+               LENGTH=79,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=BLUE,                                             X
+               INITIAL='-----------------------------------------     X
+               ----------------------'
+*
+* EMAIL ADDRESS
+         DFHMDF POS=(5,10),                                           X
+               LENGTH=14,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Email Address:'
+*
+EMAIL    DFHMDF POS=(5,25),                                           X
+               LENGTH=50,                                              X
+               ATTRB=(UNPROT,NORM,IC),                                X
+               COLOR=TURQUOISE,                                        X
+               INITIAL='_'
+*
+         DFHMDF POS=(5,76),                                           X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* PASSWORD
+         DFHMDF POS=(7,10),                                           X
+               LENGTH=9,                                               X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Password:'
+*
+PASSWD   DFHMDF POS=(7,25),                                           X
+               LENGTH=20,                                              X
+               ATTRB=(UNPROT,DRK),                                     X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(7,46),                                           X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* CONFIRM PASSWORD
+         DFHMDF POS=(8,10),                                           X
+               LENGTH=17,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Confirm Password:'
+*
+CONFPW   DFHMDF POS=(8,28),                                           X
+               LENGTH=20,                                              X
+               ATTRB=(UNPROT,DRK),                                     X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(8,49),                                           X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* FIRST NAME
+         DFHMDF POS=(10,10),                                          X
+               LENGTH=11,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='First Name:'
+*
+FNAME    DFHMDF POS=(10,25),                                          X
+               LENGTH=30,                                              X
+               ATTRB=(UNPROT,NORM),                                    X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(10,56),                                          X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* LAST NAME
+         DFHMDF POS=(11,10),                                          X
+               LENGTH=10,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Last Name:'
+*
+LNAME    DFHMDF POS=(11,25),                                          X
+               LENGTH=30,                                              X
+               ATTRB=(UNPROT,NORM),                                    X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(11,56),                                          X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* PHONE NUMBER
+         DFHMDF POS=(12,10),                                          X
+               LENGTH=13,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Phone Number:'
+*
+PHONE    DFHMDF POS=(12,25),                                          X
+               LENGTH=15,                                              X
+               ATTRB=(UNPROT,NORM),                                    X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(12,41),                                          X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* SUBSCRIPTION PLAN
+         DFHMDF POS=(14,10),                                          X
+               LENGTH=18,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Subscription Plan:'
+*
+PLAN     DFHMDF POS=(14,29),                                          X
+               LENGTH=3,                                               X
+               ATTRB=(UNPROT,NORM),                                    X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(14,33),                                          X
+               LENGTH=35,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=NEUTRAL,                                          X
+               INITIAL='(BAS=Basic PRE=Premium ENT=Enterpr)'
+*
+         DFHMDF POS=(14,69),                                          X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* PAYMENT METHOD
+         DFHMDF POS=(16,10),                                          X
+               LENGTH=15,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Payment Method:'
+*
+PAYMT    DFHMDF POS=(16,26),                                          X
+               LENGTH=2,                                               X
+               ATTRB=(UNPROT,NORM),                                    X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(16,29),                                          X
+               LENGTH=32,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=NEUTRAL,                                          X
+               INITIAL='(CC=Credit PP=PayPal BT=BankTrf)'
+*
+         DFHMDF POS=(16,62),                                          X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* CREDIT CARD NUMBER (CONDITIONAL)
+         DFHMDF POS=(18,10),                                          X
+               LENGTH=12,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Card Number:'
+*
+CARDNO   DFHMDF POS=(18,23),                                          X
+               LENGTH=16,                                              X
+               ATTRB=(UNPROT,NUM),                                     X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(18,40),                                          X
+               LENGTH=7,                                               X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='Expiry:'
+*
+EXPIRY   DFHMDF POS=(18,48),                                          X
+               LENGTH=4,                                               X
+               ATTRB=(UNPROT,NUM),                                     X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(18,53),                                          X
+               LENGTH=4,                                               X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='CVV:'
+*
+CVV      DFHMDF POS=(18,58),                                          X
+               LENGTH=3,                                               X
+               ATTRB=(UNPROT,NUM),                                     X
+               COLOR=TURQUOISE,                                        X
+               INITIAL=' '
+*
+         DFHMDF POS=(18,62),                                          X
+               LENGTH=1,                                               X
+               ATTRB=ASKIP
+*
+* MESSAGE LINE
+         DFHMDF POS=(20,1),                                           X
+               LENGTH=79,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=BLUE,                                             X
+               INITIAL='-----------------------------------------     X
+               ----------------------'
+*
+MSG      DFHMDF POS=(21,1),                                           X
+               LENGTH=79,                                              X
+               ATTRB=(ASKIP,BRT),                                      X
+               COLOR=YELLOW
+*
+* FUNCTION KEYS
+         DFHMDF POS=(23,1),                                           X
+               LENGTH=79,                                              X
+               ATTRB=(ASKIP,NORM),                                     X
+               COLOR=GREEN,                                            X
+               INITIAL='PF1=Help  PF3=Exit  PF5=Clear  PF12=Cancel   X
+                 ENTER=Submit Registration'
+*
+         DFHMSD TYPE=FINAL
+         END

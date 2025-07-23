@@ -1,0 +1,6 @@
+*.o
+*.class
+*.dbrm
+.DS_Store
+*.log
+*.tmp
