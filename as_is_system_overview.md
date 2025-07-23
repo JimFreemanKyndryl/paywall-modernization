@@ -146,6 +146,79 @@ paywall-modernization/
     ├── skills/                       # Training materials
     └── organisation/                 # Change templates
 ```
+## Data Schema
+```mermaid
+erDiagram
+    CUSTOMERS {
+        INTEGER CUSTOMER_ID PK
+        VARCHAR EMAIL
+        CHAR PASSWORD_HASH
+        CHAR SALT
+        VARCHAR FIRST_NAME
+        VARCHAR LAST_NAME
+        CHAR STATUS
+        -- (other fields omitted for brevity)
+    }
+    PLAN_DEFINITIONS {
+        CHAR PLAN_CODE PK
+        VARCHAR PLAN_NAME
+        VARCHAR DESCRIPTION
+        DECIMAL MONTHLY_PRICE
+        DECIMAL ANNUAL_PRICE
+        INTEGER MAX_USERS
+        VARCHAR FEATURES
+        CHAR STATUS
+        -- (other fields omitted for brevity)
+    }
+    SUBSCRIPTIONS {
+        INTEGER SUBSCRIPTION_ID PK
+        INTEGER CUSTOMER_ID FK
+        CHAR PLAN_CODE FK
+        CHAR PAYMENT_METHOD
+        DATE START_DATE
+        DATE END_DATE
+        CHAR STATUS
+        -- (other fields omitted for brevity)
+    }
+    SUBSCRIPTION_HISTORY {
+        INTEGER HISTORY_ID PK
+        INTEGER SUBSCRIPTION_ID FK
+        INTEGER CUSTOMER_ID FK
+        CHAR PLAN_CODE
+        VARCHAR ACTION
+        -- (other fields omitted for brevity)
+    }
+    PAYMENT_METHODS {
+        INTEGER PAYMENT_ID PK
+        INTEGER CUSTOMER_ID FK
+        CHAR PAYMENT_METHOD
+        CHAR IS_DEFAULT
+        CHAR STATUS
+        -- (other fields omitted for brevity)
+    }
+    PAYMENT_TRANSACTIONS {
+        INTEGER TRANSACTION_ID PK
+        INTEGER SUBSCRIPTION_ID FK
+        INTEGER PAYMENT_ID FK
+        DECIMAL AMOUNT
+        CHAR STATUS
+        -- (other fields omitted for brevity)
+    }
+    ACTIVATION_KEYS {
+        CHAR ACTIVATION_KEY PK
+        INTEGER CUSTOMER_ID FK
+        CHAR USED
+        -- (other fields omitted for brevity)
+    }
+
+    CUSTOMERS ||--o{ SUBSCRIPTIONS : "has"
+    CUSTOMERS ||--o{ PAYMENT_METHODS : "owns"
+    CUSTOMERS ||--o{ ACTIVATION_KEYS : "receives"
+    PLAN_DEFINITIONS ||--o{ SUBSCRIPTIONS : "offered via"
+    SUBSCRIPTIONS ||--o{ SUBSCRIPTION_HISTORY : "changes"
+    SUBSCRIPTIONS ||--o{ PAYMENT_TRANSACTIONS : "billed by"
+    PAYMENT_METHODS ||--o{ PAYMENT_TRANSACTIONS : "used in"
+```
 
 ## Artifact Flow Visualization
 
